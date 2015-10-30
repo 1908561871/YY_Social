@@ -4,7 +4,7 @@ import android.content.Context;
 
 import social.life.cn.mvp.model.MainModel;
 import social.life.cn.mvp.model.imodel.IMainModel;
-import social.life.cn.mvp.view.iview.IMainView;
+import social.life.cn.mvp.view.iview.IMainTabView;
 
 
 /**
@@ -12,10 +12,10 @@ import social.life.cn.mvp.view.iview.IMainView;
  */
 public class MainPresenter {
 
-    private IMainView iMainView;
+    private IMainTabView iMainView;
     private IMainModel iMainModel;
 
-    public MainPresenter(IMainView iMainView) {
+    public MainPresenter(IMainTabView iMainView) {
         this.iMainView = iMainView;
         iMainModel=  new MainModel();
     }

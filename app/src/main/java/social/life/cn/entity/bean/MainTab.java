@@ -2,21 +2,23 @@ package social.life.cn.entity.bean;
 
 
 import social.life.cn.R;
+import social.life.cn.mvp.view.fragment.FindTabFragment;
+import social.life.cn.mvp.view.fragment.HomeTabFragment;
+import social.life.cn.mvp.view.fragment.MessageTabFragment;
+import social.life.cn.mvp.view.fragment.MineTabFragment;
 
 /**
  * Created by zhangweibo on 2015/8/8.
  */
 public enum  MainTab {
     //首页;
-    HOME(R.drawable.button_home,R.string.home,0,0, null,R.drawable.button_home),
+    HOME(R.mipmap.main_tab_home,R.string.home,0,0, HomeTabFragment.class,R.drawable.btn_tab_home),
     //消息
-    MESSAGE(R.drawable.button_mes,R.string.message,1,1, null,R.drawable.button_mes),
-    //好友
-    FRIENDS(R.drawable.button_friedns,R.string.friends,2,2, null,R.drawable.button_friedns),
-    //动态
-    DYNAMIC(R.drawable.button_dynamic,R.string.dynamic,3,3, null,R.drawable.button_dynamic),
-    //更多
-    MORE(R.drawable.button_more,R.string.more,4,4, null,R.drawable.button_more);
+    MESSAGE(R.mipmap.main_tab_msg,R.string.message,1,1, MessageTabFragment.class,R.drawable.btn_tab_msg),
+    //发现
+    FIND(R.mipmap.main_tab_find,R.string.find,3,3, FindTabFragment.class,R.drawable.btn_tab_find),
+    //我的
+    MINE(R.mipmap.main_tab_mine,R.string.mine,4,4, MineTabFragment.class,R.drawable.btn_tab_mine);
 
     //图标
     private int icon;

@@ -13,23 +13,16 @@ import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 
+import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
-import dmax.dialog.SpotsDialog;
-import social.life.cn.R;
 import social.life.cn.event.NetChangeEvent;
 import social.life.cn.exception.CrashApplication;
 import social.life.cn.util.SAFUtils;
 import social.life.cn.util.ToastUtils;
-import social.life.cn.view.loadinglayout.DynamicBox;
-import social.life.cn.view.loadtoast.LoadToast;
 
 
 /**
@@ -44,14 +37,12 @@ public class BaseActivity extends FragmentActivity{
 	public static boolean isNetAvailabe;
 	private boolean isShowNet;
     protected Handler mHandler = new SafeHandler(this);
-	private SpotsDialog spotsDialog;
-	private DynamicBox box;
-	private LoadToast loadToast;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		app = (CrashApplication) this.getApplication();
 		addActivityToManager(this);
 		EventBus.getDefault().register(this);
+
 	}
 	
 	protected  void addActivityToManager(Activity act) {
@@ -94,6 +85,7 @@ public class BaseActivity extends FragmentActivity{
 	protected void onDestroy() {
 		super.onDestroy();
 		delActivityFromManager(this);
+		mHandler.removeCallbacksAndMessages(null);
 		EventBus.getDefault().unregister(this);
     }
 	
@@ -119,11 +111,9 @@ public class BaseActivity extends FragmentActivity{
 	}
 
 
-    /**
+  /*  *//**
      * 设置标题
-     * @param titleName
-     * @param isBack
-     */
+     *//*
     public void setHeadTitle(String titleName,boolean isBack,boolean isShowNet){
         TextView title= (TextView) findViewById(R.id.tv_title);
         title.setText(titleName);
@@ -147,10 +137,10 @@ public class BaseActivity extends FragmentActivity{
 			});
 		}
     }
-
+*/
 	@Subscribe
   public void netChange(NetChangeEvent event){
-		isNetAvailabe=event.isNetAvailable();
+		/*isNetAvailabe=event.isNetAvailable();
 		RelativeLayout rl_set_net= (RelativeLayout) findViewById(R.id.rl_set_net);
 		if (rl_set_net==null)
 		{
@@ -166,7 +156,7 @@ public class BaseActivity extends FragmentActivity{
 		  });
       }else{
 		  rl_set_net.setVisibility(View.GONE);
-	  }
+	  }*/
   }
 
 	/**
@@ -185,64 +175,8 @@ public class BaseActivity extends FragmentActivity{
 	}
 
 
-	public  void showSpotsDialog(String mes){
-
-		if (spotsDialog==null){
-			spotsDialog=new SpotsDialog(this,mes);
-		}
-		if (!spotsDialog.isShowing())
-		{
-			spotsDialog.show();
-		}
-	}
 
 
-	public void hideSpotsDialog(){
-		spotsDialog.dismiss();
-
-	}
-
-	/**
-	 * 加载viewe
-	 * @param view
-	 */
-
-	public void showLoadingView(View view){
-		box=new DynamicBox(this,view);
-		box.showLoadingLayout();
-	}
-
-
-	public void showLoadingView(int res){
-		box=new DynamicBox(this,res);
-		box.showLoadingLayout();
-	}
-
-
-
-	public void showLoadToast(){
-
-		if (loadToast==null){
-			loadToast=new LoadToast(this);
-		}
-		loadToast.setText("正在获取数据...");
-		loadToast.show();
-	}
-
-    public void showLoadToastSuccess(){
-		if (loadToast!=null)
-		{
-			loadToast.success();
-		}
-
-	}
-
-	public void showLoadToastError(){
-		if (loadToast!=null)
-		{
-		loadToast.error();
-		}
-	}
 
 
 }

@@ -9,8 +9,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
-import com.avos.avoscloud.AVOSCloud;
-import com.avos.avoscloud.AVObject;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import social.life.cn.config.Constant;
-import social.life.cn.entity.bean.UserInfo;
 import social.life.cn.util.StringUtils;
 
 
@@ -63,7 +61,7 @@ public class CrashApplication extends Application {
 		Fresco.initialize(getApplicationContext());
 		resignEntity();
 		//初始化数据存储
-		AVOSCloud.initialize(this, Constant.IM_APPID, Constant.IM_KEY);
+		//AVOSCloud.initialize(this, Constant.IM_APPID, Constant.IM_KEY);
 		instance = this;
 		session = new HashMap<String, Object>();
 		activityManager = new ArrayList<Activity>();
@@ -87,8 +85,7 @@ public class CrashApplication extends Application {
 	 * 初始化实体
 	 */
 	public  void  resignEntity(){
-		AVObject.registerSubclass(UserInfo.class);
-
+		//AVObject.registerSubclass(UserInfo.class);
 
 	}
 

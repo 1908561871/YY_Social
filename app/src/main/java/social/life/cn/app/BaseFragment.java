@@ -58,7 +58,7 @@ public abstract class BaseFragment extends Fragment {
         return mContentView;
     }
 
-    protected void setContentView(@LayoutRes int layoutResID) {
+    protected  void setContentView(@LayoutRes int layoutResID) {
         mContentView = LayoutInflater.from(mApp).inflate(layoutResID, null);
         ButterKnife.bind(this, mContentView);
     }

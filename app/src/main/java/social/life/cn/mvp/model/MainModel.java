@@ -13,4 +13,7 @@ public class MainModel implements IMainModel {
     @Override
     public void IMinit(Context context) {
     }
+
+
+
 }
